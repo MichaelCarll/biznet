@@ -26,9 +26,34 @@ module.exports = function (passport){
             }
             if(user){
                 req.login(user,(err)=>{
-                    
+                    //if errors arent found when logging in
+                    if(err){
+                        return next(err)
+                    }
+                    //complete a log of handshake
+                    res.json({success: req.user ? 'Yes' : 'No', user : req.user})
                 })
             }
-        })
+            else{
+                res.send('Server Error')
+            }
+        })(req,req,next)
     })
+    //logout api route
+    router.get("/logout",function(req,res){
+        console.log('logout start')
+        req.logout();
+        res.json({success: req.user ? "No" : "Yes"})
+    })
+    //checking to see if still logged in to avoid unwanted error codes 
+    router.get("/test",function(req,res){
+        if(req.user){
+            res.send("You're good")
+        }
+        else{
+            res.send("Im freaking tf out")
+        }
+    });
+    //this will ensure that the server executes this code
+    return router;
 }

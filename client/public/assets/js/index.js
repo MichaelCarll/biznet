@@ -1,0 +1,10 @@
+$(document).ready(function(){
+    $(".lo").on('click',function(){
+        alert("hi")
+        $(".modalOne").modal("show")
+    })
+})
+$(".lo").on('click',function(){
+    alert("hi")
+    $(".modalOne").modal("show")
+})

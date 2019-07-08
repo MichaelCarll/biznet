@@ -1,10 +1,5 @@
 $(document).ready(function(){
-    $(".lo").on('click',function(){
-        alert("hi")
+    $("#loginn").on('click',function(){
         $(".modalOne").modal("show")
     })
-})
-$(".lo").on('click',function(){
-    alert("hi")
-    $(".modalOne").modal("show")
 })

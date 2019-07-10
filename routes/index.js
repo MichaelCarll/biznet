@@ -1,5 +1,2 @@
-const router = require('express').Router();
-
-router.get('/signup',function(req,res){
-    
-})
+const app = require('express');
+app.use('/auth',require('./auth'))

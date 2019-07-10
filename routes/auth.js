@@ -1,9 +1,10 @@
 var express = require("express");
+var passport = require("passport")
 var router = express.Router();
-var db = require('../model');
+var db = require('../models');
 var User = db.User
 
-module.exports = function (passport){
+module.exports = function (){
     router.post('/signup',function(req,res){
         console.log(req.body);
         let user = new User();

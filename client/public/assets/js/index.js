@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $("#loginn").on('click',function(){
-        $(".modalOne").modal("show")
+        $(".landingModal2").modal("show")
     })
     $("#signUp").on('click',function(){
-        $(".modalOne").modal("show")
+        $(".landingModal1").modal("show")
     })
 })

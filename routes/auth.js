@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
-var db = require('../model');
+var db = require('../models');
 var User = db.User
 
 module.exports = function (passport){
     router.post('/signup',function(req,res){
         console.log(req.body);
         let user = new User();
-        req.body.password = user.hashpassword(req.body.password);
+        req.body.password = User.hashPassword(req.body.password);
         User.create(req.body,(err,data)=>{
             if(err&& err.code === 11000){
                 res.send('email already taken')
@@ -37,7 +37,7 @@ module.exports = function (passport){
             else{
                 res.send('Server Error')
             }
-        })(req,req,next)
+        })(req,res,next)
     })
     //logout api route
     router.get("/logout",function(req,res){
@@ -55,5 +55,6 @@ module.exports = function (passport){
         }
     });
     //this will ensure that the server executes this code
+    console.log("herere")
     return router;
 }

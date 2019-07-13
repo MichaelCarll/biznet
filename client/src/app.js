@@ -9,7 +9,7 @@ function App() {
     <Router>
        <Switch>
         <Route exact path="/" render={props=><LandingPage {...props} />} />
-        <Route exact path="/projects" render={props=><LandingPage {...props} />} />
+        <Route exact path="/projects" render={props=><Projects {...props} />} />
        </Switch>
      </Router>
   );

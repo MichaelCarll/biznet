@@ -38,8 +38,14 @@ app.use(passport.session());
 
 =======
 //linking routes
+<<<<<<< HEAD
 >>>>>>> 597f319ab03bc40ac9ce9bfbda96ab441c7ac0b1
 require('./routes')
+=======
+const passportRoute = require("./routes/auth")(passport);
+require("./passport")(passport);
+app.use('/auth', passportRoute);
+>>>>>>> 042d225f5b42924e63fb6a24dccdfdd0a4a5452b
 //serving static files
 if(process.env.NODE_ENV==="production"){
     app.use(express.static("client/build"))

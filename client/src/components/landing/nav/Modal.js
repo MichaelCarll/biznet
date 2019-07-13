@@ -13,14 +13,15 @@ class modal extends React.Component{
     }
     signupSend=(event)=>{
         event.preventDefault();
-        axios.post('/auth/signup',function(res,err){
-            console.log(res)
+        axios.post('/auth/signup',this.state).then(function(res){
+          window.location.assign("/home")
         })
     }
     loginSend=(event)=>{
         event.preventDefault();
-        axios.post('/auth/login',function(res,err){
-            console.log(res)
+        axios.post('/auth/login',this.state).then(function(res){
+          window.location.assign("/home")
+          
         })
     }
 
@@ -37,14 +38,14 @@ class modal extends React.Component{
                         </button>
                       </div>
                       <div className="modal-body">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" name='email' value={this.state.email} onChange={this.handleChange} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      <div className="form-group">
+                          <label htmlFor="exampleInputEmail1">Email address</label>
+                          <input type="email" name='Email' onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" name='password' onChange={this.handleChange} class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        <div className="form-group">
+                          <label htmlFor="exampleInputPassword1">Password</label>
+                          <input type="password" name='password' onChange={this.handleChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
                         </div>
                       </div>
                       <div className="modal-footer">
@@ -64,14 +65,14 @@ class modal extends React.Component{
                         </button>
                       </div>
                       <div className="modal-body">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" name='email' value={this.state.email} onChange={this.handleChange} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      <div className="form-group">
+                          <label htmlFor="exampleInputEmail">Email address</label>
+                          <input type="email" name='email' onChange={this.handleChange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                          <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" name='password' onChange={this.handleChange} class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                        <div className="form-group">
+                          <label htmlFor="exampleInputPassword1">Password</label>
+                          <input type="password" name='password' onChange={this.handleChange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
                         </div>
                       </div>
                       <div className="modal-footer">

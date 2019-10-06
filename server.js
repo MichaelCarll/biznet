@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 //initalize express
 const app = express();
 //set port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 //serve static files
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
@@ -25,19 +25,34 @@ resave:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 //linking routes
-require('./routes')
-//serving static files
-if(process.env.NODE_ENV==="production"){
-    app.use(express.static("client/build"))
-}
-//serving sites
-app.get('/',function(req,res){
-    res.send("./client/build")
-});
+
+// const passportRoute = require("./routes/auth")(passport);
+// require("./passport")(passport);
+// app.use('/auth', require("./routes/auth")(passport));
+// app.use(require('./routes'))
+
 //server listenig and db connection
 var db = require("./models")
+var visitor = db.Visitor;
+
+app.get("/helloworld",function(req,res){
+    console.log("hello world ");
+    res.send("hello world")
+})
 db.sequelize.sync().then(function(){
     app.listen(port, function (){
         console.log('listening on localhost:'+ port)
+    })
+})
+app.post('/saveinfo',function(req,res){
+    console.log(req.body)
+    visitor.create(req.body,(err,data)=>{
+        if(err&& err.code === 11000){
+            res.send('email already taken')
+        }
+        else{
+            console.log(data);
+            res.send('succesfully created user');
+        }
     })
 })

@@ -1,9 +1,9 @@
-const express   =   require('express');
-const passport = require('passport');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const formData = require('express-form-data');
-const bodyParser = require('body-parser');
+const express = require('node_modules/express');
+const passport = require('node_modules/passport');
+const session = require('node_modules/express-session');
+const cookieParser = require('node_modules/cookie-parser');
+const formData = require('node_modules/express-form-data');
+const bodyParser = require('node_modules/body-parser');
 //initalize express
 const app = express();
 //set port
